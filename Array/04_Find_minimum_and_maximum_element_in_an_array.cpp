@@ -40,4 +40,6 @@ int main()
     std::pair<int, int> ans = findMaxMin(arr, size);
     std::cout << "Minimum value in the Array is: " << ans.first << std::endl;
     std::cout << "Maximum value in the Array is: " << ans.second << std::endl;
+
+    return 0;
 }

@@ -60,4 +60,6 @@ int main()
 
     reverse(arr, size);
     printArr(arr, size);
+
+    return 0;
 }
