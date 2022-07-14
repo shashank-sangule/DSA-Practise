@@ -3,7 +3,8 @@ Union of two arrays
 
 Given two arrays a[] and b[] of size n and m respectively. The task is to find union between these two arrays.
 
-Union of the two arrays can be defined as the set containing distinct elements from both the arrays. If there are repetitions, then only one occurrence of element should be printed in the union.
+Union of the two arrays can be defined as the set containing distinct elements from both the arrays. 
+If there are repetitions, then only one occurrence of element should be printed in the union.
 
 Example 1:
 
@@ -102,11 +103,10 @@ std::pair<int*, int> unionArr(int arr1[], int arr2[], int size1, int size2)
     std::pair<int*, int> ans;
     ans.first = result;
     ans.second = pointerResult;
-    // delete[] result;
     return ans;
 }
 
-std::pair<int*, int> intersition(int arr1[], int arr2[], int size1, int size2)
+std::pair<int*, int> intersection(int arr1[], int arr2[], int size1, int size2)
 {
     int *result = new int[size1 + size2];
 
@@ -143,7 +143,6 @@ std::pair<int*, int> intersition(int arr1[], int arr2[], int size1, int size2)
     std::pair<int*, int> ans;
     ans.first = result;
     ans.second = pointerResult;
-    // delete[] result;
     return ans;
 }
 
@@ -170,10 +169,13 @@ int main()
     std::sort(arr1, arr1+size1);
     std::sort(arr2, arr2+size2);
 
-    std::pair<int*, int> ans = unionArr(arr1, arr2, size1, size2);
-    printArr(ans.first, ans.second);
-    std::pair<int*, int> ans1 = intersition(arr1, arr2, size1, size2);
-    printArr(ans1.first, ans1.second);
+    std::pair<int*, int> ansUnion = unionArr(arr1, arr2, size1, size2);
+    printArr(ansUnion.first, ansUnion.second);
+    std::pair<int*, int> ansIntersection = intersection(arr1, arr2, size1, size2);
+    printArr(ansIntersection.first, ansIntersection.second);
+
+    delete[] ansUnion.first;
+    delete[] ansIntersection.first;
 
     return 0;
 }

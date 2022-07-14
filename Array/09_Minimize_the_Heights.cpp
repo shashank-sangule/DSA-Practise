@@ -21,8 +21,8 @@ Arr[] = {1, 5, 8, 10}
 Output:
 5
 Explanation:
-The array can be modified as 
-{3, 3, 6, 8}. The difference between 
+The array can be modified as
+{3, 3, 6, 8}. The difference between
 the largest and the smallest is 8-3 = 5.
 Example 2:
 
@@ -33,7 +33,54 @@ Output:
 11
 Explanation:
 The array can be modified as
-{6, 12, 9, 13, 17}. The difference between 
-the largest and the smallest is 17-6 = 11. 
+{6, 12, 9, 13, 17}. The difference between
+the largest and the smallest is 17-6 = 11.
 
 */
+
+#include <iostream>
+#include <algorithm>
+
+int minHeight(int arr[], int size, int key)
+{
+    std::sort(arr, arr + size);
+    int ans = arr[size - 1] - arr[0];
+
+    int tempMin = arr[0];
+    int tempMax = arr[size - 1];
+
+    for (int i = 1; i < size; i++)
+    {
+        if (arr[i] - key < 0)
+        {
+            continue;
+        }
+
+        tempMin = std::min(arr[0] + key, arr[i] - key);
+        tempMax = std::max(arr[i - 1] + key, arr[size - 1] - key);
+
+        ans = std::min(ans, tempMax - tempMin);
+    }
+    return ans;
+}
+
+int main()
+{
+    int arr[100];
+    int size, key;
+    std::cout << "Enter the size of array: ";
+    std::cin >> size;
+    for (int i = 0; i < size; i++)
+    {
+        std::cout << "Enter the value of " << i << " index: ";
+        std::cin >> arr[i];
+    }
+
+    std::cout << "Enter the value of Key: ";
+    std::cin >> key;
+
+    int ans = minHeight(arr, size, key);
+    std::cout << "Minimum possible height of towers is: " << ans << std::endl;
+
+    return 0;
+}
